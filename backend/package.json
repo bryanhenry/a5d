@@ -1,0 +1,56 @@
+{
+  "name": "a5d-backend",
+  "description": "Backend for Demo",
+  "author": {
+    "name": "Bryan Henry",
+    "email": "bryanhenry1980@gmail.com"
+  },
+  "scripts": {
+    "prebuild": "npm run build:clean",
+    "build": "tsc",
+    "build:clean": "rimraf dist",
+    "build:watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "postpublish": "npm run build:clean",
+    "lint": "tslint './src/**/*.{ts,tsx}' --project ./tsconfig.json --type-check",
+    "pretest": "npm run build",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "check": "npm-run-all test lint build:clean",
+    "start": "ts-node src/index.ts"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/cors": "^2.8.3",
+    "@types/graphql": "^0.12.7",
+    "@types/mongoose": "^5.0.7",
+    "@types/node": "^8.0.0",
+    "@types/uuid": "^3.4.3",
+    "apollo-server-express": "^1.3.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^2.23.1",
+    "mongoose": "^5.0.12",
+    "tslib": "^1.7.1",
+    "uuid4": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.0",
+    "jest": "^20.0.4",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^20.0.6",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.1.2",
+    "typescript": "^2.3.4"
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
+}

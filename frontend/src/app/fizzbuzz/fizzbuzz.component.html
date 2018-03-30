@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <div class="row">
+        <div class="col-sm">
+          <h4>Current Game</h4>
+        </div>
+        <div class="col-sm">
+          <button class="btn btn-primary" (click)="newGame()">New Game</button>
+        </div>
+      </div>
+
+
+      <p>Game Number (Current): <strong *ngIf="gameFocus">{{gameFocus.gameNumber}}</strong></p>
+      <p>Last Number (Current): <strong *ngIf="gameFocus">{{gameFocus.lastNumber}}</strong></p>
+
+      <table class="table table-striped" class="col-sm">
+        <thead>
+        <tr>
+          <th scope="col">Round</th>
+          <th scope="col">Answer</th>
+          <th scope="col">Result</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="gameFocus">
+        <tr *ngFor="let round of gameFocus.rounds; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{round.answer}}</td>
+          <td>{{round.result ? 'Correct' : 'Incorrect'}}</td>
+        </tr>
+        </tbody>
+
+      </table>
+
+      <input [(ngModel)]="answer" required>
+      <button class="btn btn-primary" (click)="newAnswer()">Submit</button>
+    </div>
+
+    <div class="col-sm">
+      <h4>Available Games</h4>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Game Number</th>
+          <th scope="col">Last Number</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let game of gameList">
+        <tr>
+          <td>{{game.gameNumber}}</td>
+          <td>{{game.lastNumber}}</td>
+          <td><button class="btn btn-primary" (click)="joinGame(game.gameNumber, game.lastNumber)" >Join Game</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

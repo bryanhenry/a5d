@@ -1,0 +1,22 @@
+version: '2'
+services:
+  mongo:
+    build: MongoDB/
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+  backend:
+    build:
+      context: ../backend
+    ports:
+      - 9999:9999
+    depends_on:
+      - mongo
+      - frontend
+  frontend:
+    build:
+      context: ../frontend
+    ports:
+       - 80:80
+    depends_on:
+      - mongo
